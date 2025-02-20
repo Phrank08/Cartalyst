@@ -45,8 +45,6 @@ describe('Test suite: renderOrderSummary', () => {
         document.querySelector(`.js-product-quantity-${productId2}`).innerText
       ).toContain('Quantity: 1');
 
-      document.querySelector('.js-test-container').innerHTML = '';
-
   })
 
   it('removes a product', () => { 
@@ -63,6 +61,10 @@ describe('Test suite: renderOrderSummary', () => {
       expect(cart.length).toEqual(1);
       expect(cart[0].productId).toEqual(productId2)
 
-      document.querySelector('.js-test-container').innerHTML = '';
   });
+
+
+  afterEach(() => {
+    document.querySelector('.js-test-container').innerHTML = '';
+  })
 });
