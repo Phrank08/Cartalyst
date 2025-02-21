@@ -1,4 +1,4 @@
-//import { products } from "./products.js";
+import { validDeliveryOption } from "./deliveryOption.js";
 
 
 export let cart;
@@ -100,7 +100,11 @@ export function updateDeliveryOption (productId, deliveryOptionId) {
         } 
       });
 
-      if(!matchingItem) {
+      if (!matchingItem) {
+        return;
+      }
+
+      if(!validDeliveryOption(deliveryOptionId)) {
         return;
       }
 
