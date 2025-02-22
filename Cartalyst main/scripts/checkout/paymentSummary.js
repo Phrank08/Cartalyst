@@ -1,4 +1,4 @@
-import {cart, calculateCartQuantity} from '../../data/cart.js';
+import {cart} from '../../data/cart.js';
 import { getProduct } from '../../data/products.js';
 import { getDeliveryOption } from '../../data/deliveryOption.js';
 import { formatCurrency } from '../utils/money.js';
@@ -33,46 +33,45 @@ export function renderPaymentSummary() {
     </div>
 
     <div class="payment-summary-row">
-      <div class="checkout-item-quantity">Items(${cartQuantity}):</div>
-      <div class="payment-summary-money>
-      $${formatCurrency(productPriceCents)}
+      <div>Items (${cartQuantity}):</div>
+      <div class="payment-summary-money">
+        $${formatCurrency(productPriceCents)}
       </div>
     </div>
 
     <div class="payment-summary-row">
       <div>Shipping &amp; handling:</div>
-      <div class="payment-summary-money js-payment-summary-shipping">
-      $${formatCurrency(shippingPriceCents)}
+      <div class="payment-summary-money">
+        $${formatCurrency(shippingPriceCents)}
       </div>
     </div>
 
     <div class="payment-summary-row subtotal-row">
       <div>Total before tax:</div>
       <div class="payment-summary-money">
-      $${formatCurrency(totalBeforeTaxCents)}
+        $${formatCurrency(totalBeforeTaxCents)}
       </div>
     </div>
 
     <div class="payment-summary-row">
       <div>Estimated tax (10%):</div>
       <div class="payment-summary-money">
-      $${formatCurrency(taxCents)}
+        $${formatCurrency(taxCents)}
       </div>
     </div>
 
     <div class="payment-summary-row total-row">
       <div>Order total:</div>
-      <div class="payment-summary-money js-payment-summary-total"">
-      $${formatCurrency(totalCents)}
+      <div class="payment-summary-money">
+        $${formatCurrency(totalCents)}
       </div>
     </div>
 
     <button class="place-order-button button-primary">
       Place your order
-    </button>  
-  `
+    </button>
+  `;
 
   document.querySelector('.js-payment-summary')
-  .innerHTML = paymentSummaryHTML;
+    .innerHTML = paymentSummaryHTML;
 }
-
