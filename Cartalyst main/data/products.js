@@ -41,7 +41,7 @@ class Product {
   }
 }
 
-class Clothing extends Product {
+class Clothing extends Product { 
   sizeChartLink;
 
   constructor(productDetails) {
@@ -57,7 +57,26 @@ class Clothing extends Product {
     `;
   }
 }
+/*
 
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString());
+
+function logThis(){
+  console.log(this);
+}
+
+logThis.call();
+
+const object3 = {
+  method() {
+    console.log(this);
+  }
+}
+
+console.log(object3.method());
+*/
 
 export const products = [
   {
