@@ -1,22 +1,22 @@
 
 class Car {
-  brand;
-  model;
+  #brand;
+  #model;
   speed = 0;
-  isTrunckOpen = false;
+  isTrunkOpen = false;
 
   constructor(brand, model) {
-    this.brand = brand;
-    this.model = model; 
+    this.#brand = brand;
+    this.#model = model; 
   }
 
   displayInfo() {
-    const trunkStatus = this.isTrunckOpen ? 'opened' : 'closed'
-    console.log(`${this.brand} ${this.model}, Speed: ${this.speed} km/h, Trunk : ${trunkStatus}`)
+    const trunkStatus = this.isTrunkOpen ? 'opened' : 'closed'
+    console.log(`${this.#brand} ${this.#model}, Speed: ${this.speed} km/h, Trunk : ${trunkStatus}`)
   }
 
   go() {
-    if(!this.isTrunckOpen && this.speed < 200) {
+    if(!this.isTrunkOpen && this.speed < 200) {
       this.speed += 5;
     }
   }
@@ -27,12 +27,12 @@ class Car {
 
   openTrunk() {
     if(this.speed === 0) {
-      this.isTrunckOpen = true
+      this.isTrunkOpen = true
     }
   }
 
   closedTrunk() {
-    this.isTrunckOpen = false;
+    this.isTrunkOpen = false;
 
   }
 }
@@ -40,13 +40,13 @@ class Car {
 const car1 = new Car('Toyota', 'Corolla');
 const car2 = new Car('Tesla', 'Model 3');
 
-/*
+
 car1.go()
 car1.openTrunk();
 car1.displayInfo();
 
-//car2.displayInfo();
-*/
+car2.displayInfo();
+
 
 class RaceCar extends Car {
   acceleration;
@@ -71,4 +71,4 @@ class RaceCar extends Car {
 }
 
 const raceCar1 = new RaceCar('McLaren', 'F1', 20);
-console.log(raceCar1)
+//console.log(raceCar1)
