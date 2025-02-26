@@ -36,6 +36,7 @@ class Car {
 
   }
 }
+/*
 
 const car1 = new Car('Toyota', 'Corolla');
 const car2 = new Car('Tesla', 'Model 3');
@@ -46,7 +47,7 @@ car1.openTrunk();
 car1.displayInfo();
 
 car2.displayInfo();
-
+*/
 
 class RaceCar extends Car {
   acceleration;
@@ -71,4 +72,5 @@ class RaceCar extends Car {
 }
 
 const raceCar1 = new RaceCar('McLaren', 'F1', 20);
-//console.log(raceCar1)
+console.log(raceCar1)
+console.log(raceCar1.speed)
