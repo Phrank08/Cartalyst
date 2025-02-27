@@ -82,8 +82,8 @@ export function renderOrderSummary() {
       const productId = link.dataset.productId;
       removeFromCart(productId);
       
-      renderCheckoutHeader();       // test
-      renderOrderSummary()          // test
+      // renderCheckoutHeader();       // test
+      // renderOrderSummary()          // test
       
 
       const container = document.querySelector(`.js-cart-item-container-${productId}`);
