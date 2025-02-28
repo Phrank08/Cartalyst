@@ -104,7 +104,54 @@ describe("Test suite: Clothing Class", () => {
 })
 
 describe("Test suite: Appliance Class", () => {
-  it("", () => {
+  let appliance;
     
+
+  beforeEach(() => {
+    appliance = new Appliance({
+      id: "54e0eccd-8f36-462b-b68a-8182611d9add",
+      image: "images/products/black-2-slot-toaster.jpg",
+      name: "2 Slot Toaster - Black",
+      rating: {
+        stars: 5,
+        count: 2197
+      },
+      priceCents: 1899,
+      keywords: [
+        "toaster",
+        "kitchen",
+        "appliances"
+      ],
+      type: "appliance",
+      warrantyLink: "images/appliance-warranty.png" ,
+      instructionLink: "images/appliance-instructions.png" 
+    });
+
+    
+
+  });
+
+  it("has correct properties and methods", () => {
+    expect(appliance.id).toEqual("54e0eccd-8f36-462b-b68a-8182611d9add");
+    expect(appliance.image).toEqual("images/products/black-2-slot-toaster.jpg");
+    expect(appliance.name).toEqual("2 Slot Toaster - Black");
+    expect(appliance.rating).toEqual({
+      stars: 5,
+      count: 2197
+    });
+    expect(appliance.priceCents).toEqual(1899);
+
+  })
+
+  it("gets the star URL", () => {
+    expect(appliance.getStarsUrl()).toEqual('images/ratings/rating-50.png')
+  })
+
+  it("gets the price", () => {
+    expect(appliance.getPrice()).toEqual(`$${formatCurrency(appliance.priceCents)}`)
+  })
+
+  it("returns appliance instruction warranty", () => {
+    expect(appliance.extraInfoHTML()).toContain(`<a href="images/appliance-warranty.png" target="_blank">`)
   })
 })
