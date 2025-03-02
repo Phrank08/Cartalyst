@@ -1,5 +1,6 @@
 import {renderOrderSummary} from '../../scripts/checkout/orderSummary.js';
 import {loadFromStorage, cart} from '../../data/cart.js';
+import { loadProducts } from '../../data/products.js';
 
 
 describe('Test suite: renderOrderSummary', () => {
@@ -9,6 +10,11 @@ describe('Test suite: renderOrderSummary', () => {
   const productName1 = 'Black and Gray Athletic Cotton Socks - 6 Pairs';
   const productName2 = 'Intermediate Size Basketball';
 
+  beforeAll((done) => {
+    loadProducts(() => {
+      done();
+    });
+  })
 
   beforeEach(() => {
     spyOn(localStorage, 'setItem')
