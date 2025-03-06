@@ -85,6 +85,8 @@ loadProducts(() => {
 
 */
 
+/*
+
 const xhr = new XMLHttpRequest;
 
 xhr.addEventListener('load', () => {
@@ -92,3 +94,8 @@ xhr.addEventListener('load', () => {
 })
 xhr.open('GET', 'https://supersimplebackend.dev/greeting');
 xhr.send();
+*/
+
+fetch('https://supersimplebackend.dev/greeting').then((response) => {
+  console.log(response.text())
+})
