@@ -11,14 +11,7 @@ async function loadPage() {
   try{
     //throw 'error'
     await loadProductsFetch();
-
-    const value = await new Promise((resolve, reject) => {
-      //throw 'error2'
-      loadCartFetch(() => {
-        // reject('error3')
-       resolve('value1');
-      });
-    });
+    await loadCartFetch();
   } catch(error) {
     console.log('Unexpected error. Please try again later.')
   }
@@ -30,8 +23,7 @@ async function loadPage() {
 
 }
 
-loadPage()
-
+loadPage();
 /*
 Promise.all([
   loadProductsFetch(),

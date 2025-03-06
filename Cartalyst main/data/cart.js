@@ -127,7 +127,7 @@ export function loadCart(fun) {
   xhr.send();
 }
 
-async function loadCartFetch() {
+export async function loadCartFetch() {
   const response = await fetch('https://supersimplebackend.dev/cart');
   const data = await response.text();
 
