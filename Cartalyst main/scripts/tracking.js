@@ -1,6 +1,15 @@
 import {getOrder} from '../data/orders.js';
 import {getProduct, loadProductsFetch} from '../data/products.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
+import {cart} from '../data/cart.js';
+
+let cartQuantity = 0
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  })
+
+  document.querySelector('.js-tracking-cart-quantity').textContent = cartQuantity;
 
 async function loadPage() {
   await loadProductsFetch();
