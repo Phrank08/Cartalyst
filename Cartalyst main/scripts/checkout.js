@@ -126,6 +126,7 @@ postGreeting();
 */
 
 
+/*
 
 async function getRequestAmazon() {
   try {
@@ -139,3 +140,28 @@ async function getRequestAmazon() {
   
 
 getRequestAmazon();
+*/
+
+async function noBodyPostRequest() {
+
+  try{
+    const response = await fetch('https://supersimplebackend.dev/greeting', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({})
+    })
+
+    if(response.status >= 400) {
+      throw response;
+    }
+  } catch(error) {
+    if(error.status === 400) {
+      const data = await error.text();
+      console.log(data);
+    }
+  }
+}
+
+noBodyPostRequest();
