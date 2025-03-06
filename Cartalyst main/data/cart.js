@@ -132,6 +132,13 @@ export async function loadCartFetch() {
   const data = await response.text();
 
   console.log(data);
+  return data;
 }
 
-loadCartFetch();
+
+
+// Extra feature: make the cart empty after creating an order.
+export function resetCart() {
+  cart = [];
+  saveToStorage();
+}
