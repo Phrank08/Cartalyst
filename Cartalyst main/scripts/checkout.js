@@ -96,6 +96,10 @@ xhr.open('GET', 'https://supersimplebackend.dev/greeting');
 xhr.send();
 */
 
-fetch('https://supersimplebackend.dev/greeting').then((response) => {
-  console.log(response.text())
-})
+async function greeting() {
+  const response = await fetch('https://supersimplebackend.dev/greeting');
+  const data = response.text();
+  console.log(data);
+}
+
+greeting();
