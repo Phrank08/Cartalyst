@@ -96,6 +96,8 @@ xhr.open('GET', 'https://supersimplebackend.dev/greeting');
 xhr.send();
 */
 
+/*
+
 async function greeting() {
   const response = await fetch('https://supersimplebackend.dev/greeting');
   const data = response.text();
@@ -103,3 +105,19 @@ async function greeting() {
 }
 
 greeting();
+*/
+
+async function postGreeting() {
+  const response = await fetch('https://supersimplebackend.dev/greeting', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({name: 'Frank'})
+  })
+
+  const data = await response.text();
+  console.log(data);
+}
+
+postGreeting();
