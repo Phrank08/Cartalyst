@@ -125,11 +125,17 @@ async function postGreeting() {
 postGreeting();
 */
 
-async function getRequestAmazon() {
-  const response = await fetch('https://amazon.com');
 
-  const data = await response.text();
-  console.log(data);
-}
+
+async function getRequestAmazon() {
+  try {
+    const response = await fetch('https://amazon.com');
+    const data = await response.text();
+    console.log(data);
+  } catch(error) {
+    console.log('CORS error. Your request was blocked by the backend.');
+  }
+  }
+  
 
 getRequestAmazon();
