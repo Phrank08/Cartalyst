@@ -107,6 +107,8 @@ async function greeting() {
 greeting();
 */
 
+/*
+
 async function postGreeting() {
   const response = await fetch('https://supersimplebackend.dev/greeting', {
     method: 'POST',
@@ -121,3 +123,13 @@ async function postGreeting() {
 }
 
 postGreeting();
+*/
+
+async function getRequestAmazon() {
+  const response = await fetch('https://amazon.com');
+
+  const data = await response.text();
+  console.log(data);
+}
+
+getRequestAmazon();
