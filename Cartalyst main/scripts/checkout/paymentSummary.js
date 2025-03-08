@@ -100,8 +100,7 @@ export function renderPaymentSummary() {
         }
 
 
-        // Extra feature: make the cart empty after creating an order.
-        resetCart();
+        
         window.location.href = 'orders.html'
     })
 }

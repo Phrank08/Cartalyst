@@ -1,10 +1,8 @@
-import {getProduct, loadProductsFetch} from '../data/products.js';
-import { addToCart } from '../data/cart.js';
-import {orders} from '../data/orders.js';
+import { getProduct, loadProductsFetch } from '../data/products.js';
+import { cart, addToCart } from '../data/cart.js';
+import { orders } from '../data/orders.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import formatCurrency from './utils/money.js';
-
-
 
 async function loadPage() {
   await loadProductsFetch();
@@ -33,14 +31,18 @@ async function loadPage() {
           </div>
         </div>
         <div class="order-details-grid">
-          ${productsListHTML(order)}
+          ${generateProductsListHTML(order)}
         </div>
       </div>
     `;
   });
 
-  function productsListHTML(order) {
-    let productsListHTML = '';
+  function generateProductsListHTML(order) {
+    let productsListHTML = ''; // Clear the variable before appending new product details
+
+    if (!order.products || !Array.isArray(order.products)) {
+      return productsListHTML;
+    }
 
     order.products.forEach((productDetails) => {
       const product = getProduct(productDetails.productId);
@@ -79,24 +81,46 @@ async function loadPage() {
     return productsListHTML;
   }
 
-    document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
+  document.querySelector('.js-orders-grid').innerHTML = ordersHTML;
 
-    document.querySelectorAll('.js-buy-again').forEach((button) => {
-      button.addEventListener('click', () => {
-        addToCart(button.dataset.productId);
-  
-        // (Optional) display a message that the product was added,
-        // then change it back after a second.
-        button.innerHTML = 'Added';
-        setTimeout(() => {
-          button.innerHTML = `
-            <img class="buy-again-icon" src="images/icons/buy-again.png">
-            <span class="buy-again-message">Buy it again</span>
-          `;
-        }, 1000);
+  document.querySelectorAll('.js-buy-again').forEach((button) => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId;
+      addToCart(productId);
+
+      // Update the cart quantity in the header
+      let cartQuantity = 0;
+      cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
       });
+      document.querySelector('.js-order-cart-quantity').textContent = cartQuantity;
+
+      // Update the quantity of the product in the order details
+      const productQuantityElement = button.closest('.product-details').querySelector('.product-quantity');
+      const product = cart.find((cartItem) => cartItem.productId === productId);
+      if (product) {
+        productQuantityElement.textContent = `Quantity: ${product.quantity}`;
+      }
+
+      // (Optional) display a message that the product was added,
+      // then change it back after a second.
+      button.innerHTML = 'Added';
+      setTimeout(() => {
+        button.innerHTML = `
+          <img class="buy-again-icon" src="images/icons/buy-again.png">
+          <span class="buy-again-message">Buy it again</span>
+        `;
+      }, 1000);
     });
+  });
+}
 
-  }
+loadPage();
 
-  loadPage();
+let cartQuantity = 0;
+
+cart.forEach((cartItem) => {
+  cartQuantity += cartItem.quantity;
+});
+
+document.querySelector('.js-order-cart-quantity').textContent = cartQuantity;
