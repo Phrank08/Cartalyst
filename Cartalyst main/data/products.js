@@ -116,7 +116,6 @@ export function loadProductsFetch() {
     
     });
   
-    console.log('load products')
   }).catch(() => {
     console.log('Unexpected error. Please try again later.')
   })
@@ -147,7 +146,6 @@ export function loadProducts(fun) {
   
   });
 
-  console.log('load products')
 
   fun();
   })
